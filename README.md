@@ -4,12 +4,8 @@
 [![Publish to GHCR:dev](https://github.com/canonical/node-exporter-rock/actions/workflows/rock-release-dev.yaml/badge.svg)](https://github.com/canonical/node-exporter-rock/actions/workflows/rock-release-dev.yaml)
 [![Update Rock](https://github.com/canonical/node-exporter-rock/actions/workflows/rock-update.yaml/badge.svg)](https://github.com/canonical/node-exporter-rock/actions/workflows/rock-update.yaml)
 
-[Rocks](https://canonical-rockcraft.readthedocs-hosted.com/en/latest/) for [Nginx Prometheus-exporter](https://github.com/nginx/node-exporter).  
-This repository holds all the necessary files to build rocks for the upstream versions we support. The Nginx prometheus-exporter rock is used by several observability charms including:
-- [tempo-coordinator-k8s-operator](https://github.com/canonical/tempo-coordinator-k8s-operator)
-- [loki-coordinator-k8s-operator](https://github.com/canonical/loki-coordinator-k8s-operator)
-- [mimir-coordinator-k8s-operator](https://github.com/canonical/mimir-coordinator-k8s-operator)
-- [parca-k8s-operator](https://github.com/canonical/parca-k8s-operator)
+[Rocks](https://canonical-rockcraft.readthedocs-hosted.com/en/latest/) for [prometheus' node-exporter](https://github.com/prometheus/node_exporter).  
+This repository holds all the necessary files to build rocks for the upstream versions we support. 
 
 The rocks on this repository are built with [OCI Factory](https://github.com/canonical/oci-factory/), which also takes care of periodically rebuilding the images.
 
