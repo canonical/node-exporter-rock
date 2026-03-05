@@ -1,0 +1,41 @@
+name: node-exporter
+summary: Petrified node-exporter.
+description: "Nginx prometheus exporter."
+version: "1.10.2"
+base: ubuntu@24.04
+license: Apache-2.0
+services:
+  node-exporter:
+    command: node_exporter
+    override: replace
+    startup: enabled
+platforms:
+  amd64:
+parts:
+  node-exporter:
+    plugin: go
+    source: https://github.com/prometheus/node_exporter
+    source-type: git
+    source-tag: "v1.10.2"
+    source-depth: 1
+    build-snaps:
+      - go/1.24/candidate
+    build-packages:
+      - make
+    override-build: |
+      make build
+      install -D -m755 node_exporter ${CRAFT_PART_INSTALL}/bin/node_exporter
+    stage:
+      - bin/node_exporter
+  ca-certs:
+    plugin: nil
+    overlay-packages: [ca-certificates]
+  deb-security-manifest:
+    plugin: nil
+    after:
+      - node-exporter
+      - ca-certs
+    override-prime: |
+      set -x
+      mkdir -p $CRAFT_PRIME/usr/share/rocks/
+      (echo "# os-release" && cat /etc/os-release && echo "# dpkg-query" && dpkg-query --admindir=$CRAFT_PRIME/var/lib/dpkg/ -f '${db:Status-Abbrev},${binary:Package},${Version},${source:Package},${Source:Version}\n' -W) > $CRAFT_PRIME/usr/share/rocks/dpkg.query
