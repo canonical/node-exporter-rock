@@ -24,9 +24,9 @@ parts:
       - make
     override-build: |
       make build
-      install -D -m755 node_exporter ${CRAFT_PART_INSTALL}/bin/node_exporter
+      install -D -m755 node_exporter ${CRAFT_PART_INSTALL}/usr/bin/node_exporter
     stage:
-      - bin/node_exporter
+      - usr/bin/node_exporter
   ca-certs:
     plugin: nil
     overlay-packages: [ca-certificates]
