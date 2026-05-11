@@ -2,7 +2,7 @@ name: node-exporter
 summary: Petrified node-exporter.
 description: "Nginx prometheus exporter."
 version: "1.10.2"
-base: ubuntu@24.04
+base: ubuntu@26.04
 license: Apache-2.0
 services:
   node-exporter:
